@@ -70,6 +70,7 @@ FImGuiContextManager::FImGuiContextManager(FImGuiModuleSettings& InSettings)
 	SetDPIScale(Settings.GetDPIScaleInfo());
 	BuildFontAtlas();
 
+	FCoreDelegates::OnFEngineLoopInitComplete.AddRaw(this, &FImGuiContextManager::OnFEngineLoopInitComplete);
 	FWorldDelegates::OnWorldTickStart.AddRaw(this, &FImGuiContextManager::OnWorldTickStart);
 #if ENGINE_COMPATIBILITY_WITH_WORLD_POST_ACTOR_TICK
 	FWorldDelegates::OnWorldPostActorTick.AddRaw(this, &FImGuiContextManager::OnWorldPostActorTick);
@@ -79,6 +80,8 @@ FImGuiContextManager::FImGuiContextManager(FImGuiModuleSettings& InSettings)
 FImGuiContextManager::~FImGuiContextManager()
 {
 	Settings.OnDPIScaleChangedDelegate.RemoveAll(this);
+
+	FCoreDelegates::OnFEngineLoopInitComplete.RemoveAll(this);
 
 	// Order matters because contexts can be created during World Tick Start events.
 	FWorldDelegates::OnWorldTickStart.RemoveAll(this);
@@ -112,6 +115,12 @@ void FImGuiContextManager::Tick(float DeltaSeconds)
 	{
 		FontResourcesToRelease.Empty();
 	}
+}
+
+void FImGuiContextManager::OnFEngineLoopInitComplete()
+{
+	SetDPIScale(Settings.GetDPIScaleInfo());
+	RebuildFontAtlas();
 }
 
 #if ENGINE_COMPATIBILITY_LEGACY_WORLD_ACTOR_TICK

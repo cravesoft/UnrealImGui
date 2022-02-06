@@ -84,6 +84,8 @@ private:
 		TUniquePtr<FImGuiContextProxy> ContextProxy;
 	};
 
+	void OnFEngineLoopInitComplete();
+
 #if ENGINE_COMPATIBILITY_LEGACY_WORLD_ACTOR_TICK
 	void OnWorldTickStart(ELevelTick TickType, float DeltaSeconds);
 #endif
