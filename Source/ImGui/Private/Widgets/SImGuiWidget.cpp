@@ -457,11 +457,8 @@ void SImGuiWidget::UpdateInputState()
 
 		if (bInputEnabled)
 		{
-			// We won't get mouse enter, if viewport is already hovered.
-			if (GameViewport->GetGameViewportWidget()->IsHovered())
-			{
-				InputHandler->OnMouseInputEnabled();
-			}
+			// Force mouse enter
+			InputHandler->OnMouseInputEnabled();
 
 			TakeFocus();
 		}
