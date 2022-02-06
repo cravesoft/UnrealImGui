@@ -408,6 +408,9 @@ namespace ImGuiInterops
 		SetFlag(IO.ConfigFlags, ImGuiConfigFlags_NavEnableGamepad, InputState.IsGamepadNavigationEnabled());
 		SetFlag(IO.BackendFlags, ImGuiBackendFlags_HasGamepad, InputState.HasGamepad());
 
+		// Enable resizing of windows from their edges and from the lower-left corner.
+		IO.ConfigWindowsResizeFromEdges = true;
+
 		// Check whether we need to draw cursor.
 		IO.MouseDrawCursor = InputState.HasMousePointer();
 
