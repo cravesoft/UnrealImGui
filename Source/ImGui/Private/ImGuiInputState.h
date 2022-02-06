@@ -95,6 +95,13 @@ public:
 	// @param bHasPointer - True, if input has active mouse pointer
 	void SetMousePointer(bool bInHasMousePointer) { bHasMousePointer = bInHasMousePointer; }
 
+	// Check whether the OS cursor shape can be changed by the backend platform.
+	bool HasMouseCursors() const { return bHasMouseCursors; }
+
+	// Set whether the OS cursor shape can be changed by the backend platform.
+	// @param bInHasMouseCursors - True, if the OS cursor shape can be changed
+	void SetMouseCursors(bool bInHasMouseCursors) { bHasMouseCursors = bInHasMouseCursors; }
+
 	// Check whether touch input is in progress. True, after touch is started until one frame after it has ended.
 	// One frame delay is used to process mouse release in ImGui since touch-down is simulated with mouse-down.
 	bool IsTouchActive() const { return bTouchDown || bTouchProcessed; }
@@ -231,6 +238,7 @@ private:
 	FNavInputArray NavigationInputs;
 
 	bool bHasMousePointer = false;
+	bool bHasMouseCursors = false;
 	bool bTouchDown = false;
 	bool bTouchProcessed = false;
 

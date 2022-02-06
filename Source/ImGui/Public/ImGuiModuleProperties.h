@@ -63,6 +63,15 @@ public:
 	/** Toggle whether mouse input should be shared with game. */
 	void ToggleMouseInputSharing() { SetMouseInputShared(!IsMouseInputShared()); }
 
+	/** Check whether mouse cursors can be changed. */
+	bool HasMouseCursors() const { return bHasMouseCursors; }
+
+	/** Set whether mouse cursors can be changed. */
+	void SetMouseCursors(bool bInHasMouseCursors) { bHasMouseCursors = bInHasMouseCursors; }
+
+	/** Toggle whether mouse cursors can be changed. */
+	void ToggleHasMouseCursors() { SetMouseCursors(!HasMouseCursors()); }
+
 	/** Check whether ImGui demo is visible. */
 	bool ShowDemo() const { return bShowDemo; }
 
@@ -91,6 +100,8 @@ private:
 	bool bKeyboardInputShared = false;
 	bool bGamepadInputShared = false;
 	bool bMouseInputShared = false;
+
+	bool bHasMouseCursors = false;
 
 	bool bShowDemo = false;
 

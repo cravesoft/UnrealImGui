@@ -324,6 +324,7 @@ void UImGuiInputHandler::OnPostImGuiUpdate()
 	// TODO Replace with delegates after adding property change events.
 	InputState->SetKeyboardNavigationEnabled(ModuleManager->GetProperties().IsKeyboardNavigationEnabled());
 	InputState->SetGamepadNavigationEnabled(ModuleManager->GetProperties().IsGamepadNavigationEnabled());
+	InputState->SetMouseCursors(ModuleManager->GetProperties().HasMouseCursors());
 
 	const auto& PlatformApplication = FSlateApplication::Get().GetPlatformApplication();
 	InputState->SetGamepad(PlatformApplication.IsValid() && PlatformApplication->IsGamepadAttached());

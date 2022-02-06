@@ -407,6 +407,7 @@ namespace ImGuiInterops
 		SetFlag(IO.ConfigFlags, ImGuiConfigFlags_NavEnableKeyboard, InputState.IsKeyboardNavigationEnabled());
 		SetFlag(IO.ConfigFlags, ImGuiConfigFlags_NavEnableGamepad, InputState.IsGamepadNavigationEnabled());
 		SetFlag(IO.BackendFlags, ImGuiBackendFlags_HasGamepad, InputState.HasGamepad());
+		SetFlag(IO.BackendFlags, ImGuiBackendFlags_HasMouseCursors, InputState.HasMouseCursors());
 
 		// Enable resizing of windows from their edges and from the lower-left corner.
 		IO.ConfigWindowsResizeFromEdges = true;
